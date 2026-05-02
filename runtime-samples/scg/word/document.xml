@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    <w:p><w:r><w:t>Input speed affects braking distance and output safety result.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Constraint threshold determines whether warning output should be raised.</w:t></w:r></w:p>
+  </w:body>
+</w:document>

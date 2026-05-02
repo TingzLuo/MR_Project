@@ -1,0 +1,38 @@
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'mr_project_db'
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      
+CREATE TABLE IF NOT EXISTS `documents` (
+    `id` bigint NOT NULL AUTO_INCREMENT,
+    `user_id` bigint NOT NULL,
+    `document_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `original_file_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `stored_file_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `file_path` varchar(500) CHARACTER SET utf8mb4 NOT NULL,
+    `file_type` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+    `file_size` bigint NOT NULL,
+    `process_status` varchar(30) CHARACTER SET utf8mb4 NOT NULL,
+    `is_deleted` tinyint(1) NOT NULL,
+    `created_at` datetime(6) NOT NULL,
+    `updated_at` datetime(6) NOT NULL,
+    CONSTRAINT `PK_documents` PRIMARY KEY (`id`),
+    CONSTRAINT `FK_documents_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT
+) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (39ms) [Parameters=[@__adminUsername_0='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (
+          SELECT 1
+          FROM `users` AS `u`
+          WHERE (`u`.`username` = @__adminUsername_0) AND NOT (`u`.`is_deleted`))
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\graduate\MR_Project\backend\MRProject.Api
